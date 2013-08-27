@@ -65,7 +65,6 @@ class PwdGenerator {
 	 */
 	public function generate($count = 1) {
 		$charlist_length = count($this->_options['charlist']);
-		$ret = [];
 		for ($j = 0; $j < $count; $j++) {
 			$pwd = '';
 			for ($i = 0; $i < $this->_options['length']; $i++) {
