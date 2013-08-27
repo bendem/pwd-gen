@@ -20,7 +20,7 @@ Définissez la taille du mot de passe (10 par défaut) :
 
 Définissez les caractères utilisés pour générer le mot de passe
 
-Soit avec un interval :
+Soit avec un intervalle :
 
 	$pwdGenerator->addIntervalToCharlist('a', 'z');
 	$pwdGenerator->addIntervalToCharlist('A', 'Z');

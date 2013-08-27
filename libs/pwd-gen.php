@@ -44,7 +44,7 @@ class PwdGenerator {
 	}
 
 	/**
-	 * Ajoute un interval de caractères à la liste
+	 * Ajoute un intervalle de caractères à la liste
 	 * @param char $first Premier caractère
 	 * @param char $last  Dernier caractère
 	 * @throws IllegalArgumentException
