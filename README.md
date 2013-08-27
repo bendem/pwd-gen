@@ -4,6 +4,8 @@
 
 PwdGenerator est une classe php permettant de générer des mots de passe aléatoires.
 
+**Cette classe utilise des fonctionnalités de php 5.5.x !**
+
 ## Utilisation
 
 Commencez par inclure la classe :
