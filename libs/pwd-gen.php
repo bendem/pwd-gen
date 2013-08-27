@@ -1,24 +1,27 @@
 <?php
 
-class PwdGen {
+class PwdGenerator {
 
 	protected $_default = ['length' => 10, 'charlist' => []];
 	protected $_options = [];
 
 	/**
-	 * Copie les options par défaut et les options utilisateur
-	 * @param array $options Tableau associatif d'options. Les clés peuvent être ``length`` ou ``charlist``
+	 * Copie les options par défaut
 	 */
-	public function __construct(array $options = array()) {
+	public function __construct() {
 		$this->_options = $this->_default;
-		$this->_options += $options;
 	}
 
 	/**
 	 * Défini la taille du mdp généré
 	 * @param int $length
+	 * @throws IllegalArgumentException
 	 */
 	public function setLength($length) {
+		if(!is_int($length) || $length < 1) {
+			throw new IllegalArgumentException('$length doit être un entier plus grand que 0');
+		}
+
 		$this->_options['length'] = $length;
 	}
 
@@ -57,7 +60,8 @@ class PwdGen {
 	/**
 	 * Génère une liste de mot de passe
 	 * @param  integer $count Nombre de mot de passe à générer
-	 * @return iterator
+	 * @return Generator
+	 * @see    http://php.net/manual/fr/language.generators.syntax.php
 	 */
 	public function generate($count = 1) {
 		$charlist_length = count($this->_options['charlist']);
