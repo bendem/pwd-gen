@@ -8,30 +8,32 @@ class PwdGenerator {
     protected $_options = [];
 
     /**
-     * Copie les options par défaut
+     * Construct a new generator using the default parameters.
      */
     public function __construct() {
         $this->_options = $this->_default;
     }
 
     /**
-     * Défini la taille du mdp généré
+     * Specify the size of the generated password.
+     *
      * @param int $length
      * @throws IllegalArgumentException
      */
     public function setLength($length) {
         if(!is_int($length) || $length < 1) {
-            throw new IllegalArgumentException('$length doit être un entier plus grand que 0');
+            throw new IllegalArgumentException('The length should be an int greater than 0');
         }
 
         $this->_options['length'] = $length;
     }
 
     /**
-     * Ajoute des caractères à la liste de caractères utilisés pour la génération du pwd
-     * @param char   $value Un caractère simple
-     * @param string $value Une chaine de caractères
-     * @param array  $value Un tableau de caractères
+     * Add characters to the list used to generate the password.
+     *
+     * @param char   $value A single character
+     * @param string $value A string (all the characters of the string will be added)
+     * @param array  $value An array of characters
      */
     public function addToCharlist($value) {
         if(is_array($value)) {
@@ -46,7 +48,8 @@ class PwdGenerator {
     }
 
     /**
-     * Ajoute un intervalle de caractères à la liste
+     * Add a character interval to the list of chars used to generate the password.
+     *
      * @param char $first Premier caractère
      * @param char $last  Dernier caractère
      * @throws IllegalArgumentException
@@ -60,12 +63,17 @@ class PwdGenerator {
     }
 
     /**
-     * Génère une liste de mot de passe
-     * @param  integer $count Nombre de mot de passe à générer
+     * Generate a list of password using the options set.
+     *
+     * @param  int $count Number of passwords to generate
      * @return Generator
      * @see    http://php.net/manual/fr/language.generators.syntax.php
+     * @throws IllegalArgumentException
      */
     public function generate($count = 1) {
+        if ($count < 1) {
+            throw new IllegalArgumentException("You need to generate at least one password")
+        }
         $charlist_length = count($this->_options['charlist']);
         for ($j = 0; $j < $count; $j++) {
             $pwd = '';
@@ -84,11 +92,9 @@ class PwdGenerator {
     }
 
     protected function _addArrayToCharlist(array $array) {
-        if(is_array($value)) {
-            foreach ($value as $v) {
-                if(!in_array($value, $this->_options['charlist'])) {
-                    $this->_addCharToCharlist($value);
-                }
+        foreach ($value as $v) {
+            if(!in_array($value, $this->_options['charlist'])) {
+                $this->_addCharToCharlist($value);
             }
         }
     }
