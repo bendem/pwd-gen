@@ -72,7 +72,7 @@ class PwdGenerator {
      */
     public function generate($count = 1) {
         if ($count < 1) {
-            throw new IllegalArgumentException("You need to generate at least one password")
+            throw new IllegalArgumentException("You need to generate at least one password");
         }
         $charlist_length = count($this->_options['charlist']);
         for ($j = 0; $j < $count; $j++) {
