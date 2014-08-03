@@ -14,5 +14,5 @@ $pwdGenerator->addToCharlist('@&*-/+');
 
 header("Content-type: text/plain");
 foreach ($pwdGenerator->generate(50) as $pwd) {
-	echo $pwd . "\n";
+    echo $pwd . "\n";
 }
