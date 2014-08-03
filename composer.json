@@ -1,0 +1,16 @@
+{
+    "name": "bendem/pwd-gen",
+    "description": "Password generator",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "bendem",
+            "email": "online@bendem.be"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "libs/"
+        }
+    }
+}

@@ -1,6 +1,8 @@
 <?php
 
-require 'libs' . DIRECTORY_SEPARATOR . 'pwd-gen.php';
+require 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+
+use bendem\utils\PwdGenerator;
 
 $pwdGenerator = new PwdGenerator();
 $pwdGenerator->setLength(11);

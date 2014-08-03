@@ -1,5 +1,7 @@
 <?php
 
+namespace bendem\utils;
+
 class PwdGenerator {
 
 	protected $_default = ['length' => 10, 'charlist' => []];
