@@ -2,33 +2,35 @@
 
 ## Description
 
-PwdGenerator est une classe php permettant de générer des mots de passe aléatoires.
+PwdGenerator is a php class allowing you to generate large numbers of random characters easily.
 
-**Cette classe utilise des fonctionnalités de php 5.5.x !**
+**You'll need php 5.5.x or more to use it!**
 
-## Utilisation
+## Usage
 
-Commencez par inclure la classe :
+You can use composer to install the lib:
 
 ```php
-require 'pwd-gen.php';
+require 'vendor/autoload.php';
+
+use bendem\utils\PwdGenerator;
 ```
 
-Instanciez un nouveau générateur :
+Once this is done, simply create an instance of the generator:
 
 ```php
 $pwdGenerator = new PwdGenerator();
 ```
 
-Définissez la taille du mot de passe (10 par défaut) :
+You can set the length of the generated password using:
 
 ```php
 $pwdGenerator->setLength(11);
 ```
 
-Définissez les caractères utilisés pour générer le mot de passe
+You can define the characters to use to generate the passwords
 
-Soit avec un intervalle :
+either using an interval:
 
 ```php
 $pwdGenerator->addIntervalToCharlist('a', 'z');
@@ -36,17 +38,17 @@ $pwdGenerator->addIntervalToCharlist('A', 'Z');
 $pwdGenerator->addIntervalToCharlist('0', '9');
 ```
 
-Soit en spécifiant directement les caractères :
+or by specifying the characters directly or by using a string or an array of chars:
 
 ```php
-$pwdGenerator->addToCharlist('@&*-/+');   // Avec une chaine de caractères
-$pwdGenerator->addToCharlist('$');        // Avec un caractère simple
-$pwdGenerator->addToCharlist(['(', ')']); // Avec un tableau
+$pwdGenerator->addToCharlist('@&*-/+');   // Using a string
+$pwdGenerator->addToCharlist('$');        // Using a single char
+$pwdGenerator->addToCharlist(['(', ')']); // Using an array
 ```
 
-Les mots de passe sont généré sous la forme d'un générateur, pour plus d'informations voyez la [doc php](http://php.net/manual/fr/language.generators.syntax.php)
+The passwords are returned as generators, for more informations, refer to the [php documentation](http://php.net/manual/en/language.generators.syntax.php)
 
-Afficher les mots de passe générés :
+Displaying the passwords is as simple as:
 
 ```php
 foreach ($pwdGenerator->generate(30) as $pwd) {
@@ -54,7 +56,7 @@ foreach ($pwdGenerator->generate(30) as $pwd) {
 }
 ```
 
-ou :
+or:
 
 ```php
 echo $pwdGenerator->generate()->current();
